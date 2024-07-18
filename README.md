@@ -6,5 +6,5 @@ Way back in the days of DOS and floppy disks i wrote a small boot loader that li
 
 # references
 This project has its basis in the following articles:
-https://thasso.xyz/2024/07/13/setting-up-an-x86-cpu.html
-https://os.phil-opp.com/
+* https://thasso.xyz/2024/07/13/setting-up-an-x86-cpu.html
+* https://os.phil-opp.com/
