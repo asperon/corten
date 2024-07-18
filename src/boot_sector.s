@@ -33,26 +33,6 @@ end:
     hlt
     jmp end
 
-;; Uses the BIOS to print a null-termianted string. The address of the
-;; string is found in the bx register.
-print_string:
-    pusha
-    mov ah, 0x0e ; BIOS "display character" function
-
-print_string_loop:
-    cmp byte [bx], 0
-    je print_string_return
-
-    mov al, [bx]
-    int 0x10 ; BIOS video services
-
-    inc bx
-    jmp print_string_loop
-
-print_string_return:
-    popa
-    ret
-
     align 4
 disk_address_packet:
     db 0x10 ; Size of packet
@@ -65,6 +45,8 @@ dap_sectors_num:
 READ_SECTORS_NUM equ 64
 BOOT_LOAD_ADDR equ 0x7c00
 SECTOR_SIZE equ 512
+
+%include "include/print_string.s"
 
 version_msg: db "Corten version 0.1", 13, 10, 0
 mode_msg: db "Running in 16bit real mode", 13, 10, 0
